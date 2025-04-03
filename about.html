@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Disease Identification System</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .nav-container {
+            background-color: #0284c7;
+            padding: 1.2rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+        
+        .nav-logo span {
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .main-container {
+            padding-top: 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+        }
+        
+        .section {
+            margin-bottom: 4rem;
+        }
+        
+        .section:last-child {
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #0c4a6e;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+            border-radius: 2px;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #0369a1;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            color: #475569;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            min-width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+        }
+        
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .feature-content {
+            flex: 1;
+        }
+        
+        .feature-content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #0369a1;
+        }
+        
+        .feature-content p {
+            margin-bottom: 0;
+        }
+        
+        .info-card {
+            background-color: #e0f2fe;
+            border-left: 4px solid #0ea5e9;
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2rem;
+        }
+        
+        .info-card p {
+            margin-bottom: 0;
+        }
+        
+        .process-flow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 3rem 0;
+            position: relative;
+        }
+        
+        .process-flow::before {
+            content: "";
+            position: absolute;
+            top: 45px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+            z-index: -1;
+        }
+        
+        .process-step {
+            flex: 1;
+            min-width: 220px;
+            max-width: 280px;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 auto 1rem;
+            box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3);
+        }
+        
+        .step-title {
+            font-weight: 600;
+            color: #0369a1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-desc {
+            font-size: 0.95rem;
+            color: #64748b;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        
+        .primary-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            color: white;
+            font-size: 1.1rem;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
+        }
+        
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(14, 165, 233, 0.3);
+        }
+        
+        .secondary-btn {
+            display: inline-block;
+            background: transparent;
+            color: #0284c7;
+            font-size: 1.1rem;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid #0284c7;
+        }
+        
+        .secondary-btn:hover {
+            background-color: rgba(2, 132, 199, 0.1);
+        }
+        
+        footer {
+            background-color: #0c4a6e;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        footer p {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem;
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .main-container {
+                padding: 6rem 1rem 2rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .process-flow::before {
+                display: none;
+            }
+            
+            .process-step {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">
+                <svg width="30" height="30" viewBox="0 0 120 120">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#bae6fd" />
+                            <stop offset="100%" stop-color="#0284c7" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="60" cy="60" r="50" fill="white" />
+                    <circle cx="60" cy="60" r="48" fill="url(#logoGradient)" stroke="white" stroke-width="2" />
+                    <path d="M40,60 L55,75 L85,45" stroke="white" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span>Disease ID System</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="theteam.html" class="nav-link">The Team</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="main-container">
+        <section class="section">
+            <h1>About Our Disease Identification System</h1>
+            <p>The Disease Identification System is a cutting-edge digital health tool designed to help individuals better understand their symptoms and identify potential health conditions. Our mission is to empower people with accessible, accurate health information that bridges the gap between self-diagnosis and professional medical care.</p>
+            
+            <div class="info-card">
+                <p><strong>Important Note:</strong> This system is designed for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>How Our System Helps</h2>
+            <p>Our Disease Identification System leverages advanced algorithms and comprehensive medical databases to help users understand their symptoms and potential causes. By providing educational information about possible conditions, we aim to improve health literacy and encourage appropriate medical care seeking behavior.</p>
+            
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.5 7.5L19.5 12.5L14.5 17.5M9.5 7.5L4.5 12.5L9.5 17.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Early Symptom Recognition</h3>
+                        <p>Our system helps users identify potential health concerns early by recognizing patterns in symptoms that might otherwise be overlooked or dismissed. Early recognition can lead to timely medical intervention when needed.</p>
+                    </div>
+                </li>
+                
+                <li class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12H15M12 9V15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Comprehensive Health Education</h3>
+                        <p>Beyond identification, we provide educational resources about various health conditions, including their causes, risk factors, typical progression, and general treatment approaches. This knowledge empowers users to have more informed discussions with healthcare providers.</p>
+                    </div>
+                </li>
+                
+                <li class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Improved Patient-Provider Communication</h3>
+                        <p>The system helps users organize and articulate their symptoms more effectively, leading to more productive medical consultations. This structured approach to symptom reporting can help healthcare providers make more accurate assessments.</p>
+                    </div>
+                </li>
+                
+                <li class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Appropriate Medical Care Guidance</h3>
+                        <p>Our system helps users understand when self-care may be appropriate and when symptoms warrant professional medical attention. This guidance helps reduce both unnecessary medical visits and dangerous delays in seeking essential care.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        
+        <section class="section">
+            <h2>How It Works</h2>
+            <p>Our Disease Identification System utilizes a user-friendly interface that guides individuals through a systematic evaluation process:</p>
+            
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Symptom Input</div>
+                    <p class="step-desc">Users enter their symptoms with the help of our comprehensive symptom catalog organized by body system.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Data Analysis</div>
+                    <p class="step-desc">Our algorithm analyzes the constellation of symptoms to identify potential matching conditions.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Results Presentation</div>
+                    <p class="step-desc">The system presents possible conditions matched to the symptom profile, with educational information about each.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Guidance & Next Steps</div>
+                    <p class="step-desc">Appropriate guidance is provided regarding self-care options and when to seek professional medical attention.</p>
+                </div>
+            </div>
+            
+            <p>The system continuously improves its accuracy through ongoing updates to its medical knowledge base and algorithm refinements based on the latest medical research and guidelines.</p>
+        </section>
+        
+        <section class="section">
+            <h2>Our Commitment to Responsible Health Information</h2>
+            <p>We understand the sensitivity of health-related information and the potential impact it can have on individuals. Our system is designed with these key principles in mind:</p>
+            
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15V17M12 7V13M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Clarity About Limitations</h3>
+                        <p>We clearly communicate that our system is an educational tool and not a substitute for professional medical diagnosis or treatment.</p>
+                    </div>
+                </li>
+                
+                <li class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 3H18C19.1046 3 20 3.89543 20 5V19C20 20.1046 19.1046 21 18 21H15M10 7L4 12L10 17M4 12H16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Empowerment, Not Replacement</h3>
+                        <p>We aim to empower users with knowledge while encouraging appropriate use of healthcare services, not to replace professional medical care.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        
+        <div class="button-container">
+            <a href="index.html" class="primary-btn">Get Started</a>
+            <a href="theteam.html" class="secondary-btn">Meet Our Team</a>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Disease Identification System. This system is designed for educational purposes only and should not be used as a substitute for professional medical advice or treatment.</p>
+    </footer>
+</body>
+</html>
