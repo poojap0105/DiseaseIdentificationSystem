@@ -3,394 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disease Identification System - Welcome</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        body {
-            background-color: #f8fafc;
-            color: #334155;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        .nav-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: flex-end;
-            z-index: 10;
-        }
-        
-        .nav-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .nav-btn {
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #0284c7;
-            padding: 0.6rem 1.2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-        }
-        
-        .nav-btn:hover {
-            background-color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .hero-container {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            text-align: center;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-container::before {
-            content: '';
-            position: absolute;
-            top: -150px;
-            right: -150px;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: rgba(96, 165, 250, 0.1);
-            z-index: 0;
-        }
-        
-        .hero-container::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            left: -100px;
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: rgba(96, 165, 250, 0.1);
-            z-index: 0;
-        }
-        
-        .content-wrapper {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            max-width: 1200px;
-        }
-        
-        .logo {
-            margin-bottom: 2rem;
-            position: relative;
-        }
-        
-        .logo svg {
-            filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1));
-        }
-        
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
-        }
-        
-        .tagline {
-            font-size: 1.25rem;
-            font-weight: 400;
-            margin-bottom: 3rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #475569;
-        }
-        
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3.5rem;
-            max-width: 1200px;
-        }
-        
-        .feature {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            flex: 1 1 300px;
-            max-width: 350px;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #0ea5e9, #38bdf8);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-        
-        .feature:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.08);
-        }
-        
-        .feature:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .feature h3 {
-            color: #0369a1;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            font-size: 1.3rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .feature p {
-            color: #64748b;
-            font-size: 1rem;
-        }
-        
-        .feature-icon {
-            margin-bottom: 1.2rem;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .main-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .get-started-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-            color: white;
-            font-size: 1.1rem;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .get-started-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0284c7 0%, #075985 100%);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .get-started-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(14, 165, 233, 0.3);
-        }
-        
-        .get-started-btn:hover::before {
-            opacity: 1;
-        }
-        
-        .get-started-btn:active {
-            transform: translateY(0);
-        }
-        
-        .secondary-btn {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.8);
-            color: #0284c7;
-            font-size: 1.1rem;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(14, 165, 233, 0.3);
-            cursor: pointer;
-        }
-        
-        .secondary-btn:hover {
-            background: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-        }
-        
-        .wave-divider {
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            line-height: 0;
-        }
-        
-        .wave-divider svg {
-            width: 100%;
-            height: 150px;
-        }
-        
-        .disclaimer {
-            margin-top: 3rem;
-            font-size: 0.95rem;
-            opacity: 0.9;
-            max-width: 800px;
-            padding: 1.5rem;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 12px;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            color: #475569;
-        }
-        
-        .disclaimer strong {
-            color: #0369a1;
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            .tagline {
-                font-size: 1.1rem;
-            }
-            
-            .feature {
-                padding: 1.5rem;
-            }
-            
-            .nav-container {
-                justify-content: center;
-                padding: 1rem;
-            }
-        }
-    </style>
+    <title>MediSense | Intelligent Disease Predictor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="hero-container">
-        <div class="nav-container">
-            <div class="nav-buttons">
-                <a href="about.html" class="nav-btn">About</a>
-                <a href="theteam.html" class="nav-btn">The Team</a>
-            </div>
-        </div>
-        
-        <div class="content-wrapper">
+    <div class="app-container">
+        <nav class="app-nav">
             <div class="logo">
-                <svg width="120" height="120" viewBox="0 0 120 120">
-                    <defs>
-                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#bae6fd" />
-                            <stop offset="100%" stop-color="#0284c7" />
-                        </linearGradient>
-                    </defs>
-                    <circle cx="60" cy="60" r="50" fill="white" />
-                    <circle cx="60" cy="60" r="48" fill="url(#logoGradient)" stroke="white" stroke-width="2" />
-                    <path d="M40,60 L55,75 L85,45" stroke="white" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+                <i class="fas fa-heartbeat pulse-icon"></i>
+                <h1>MediSense</h1>
             </div>
-            
-            <h1>Disease Identification System</h1>
-            <p class="tagline">A sophisticated tool to help you identify potential health conditions based on your symptoms, offering insights into possible treatments and recovery expectations.</p>
-            
-            <div class="features">
-                <div class="feature">
-                    <div class="feature-icon">
-                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 5H7C5.89543 5 5 5.89543 5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7C19 5.89543 18.1046 5 17 5H15M9 5C9 6.10457 9.89543 7 11 7H13C14.1046 7 15 6.10457 15 5M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5M12 12H15M12 16H15M9 12H9.01M9 16H9.01" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>Comprehensive Symptom Analysis</h3>
-                    <p>Select from our extensive catalog of symptoms, organized by body systems for a thorough health assessment.</p>
+            <div class="nav-links">
+                <a href="index.html" class="active"><i class="fas fa-home"></i> Home</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="theteam.html"><i class="fas fa-question-circle"></i> Team</a>
+            </div>
+        </nav>
+
+        <div class="hero-section">
+            <div class="hero-content">
+                <h2>Intelligent Disease Prediction</h2>
+                <p>Enter your symptoms to get insights about potential conditions, treatments, and recovery expectations</p>
+            </div>
+            <div class="hero-image">
+                <i class="fas fa-user-md"></i>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <section class="symptoms-card">
+                <div class="card-header">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h2>Symptom Selection</h2>
                 </div>
                 
-                <div class="feature">
-                    <div class="feature-icon">
-                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9.5 14.5L11.5 16.5L14.5 12.5M7 21H17C19.2091 21 21 19.2091 21 17V7C21 4.79086 19.2091 3 17 3H7C4.79086 3 3 4.79086 3 7V17C3 19.2091 4.79086 21 7 21Z" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>Intelligent Diagnostics</h3>
-                    <p>Our advanced algorithm identifies possible conditions matching your symptom profile with remarkable accuracy.</p>
+                <div class="search-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="symptom-search" placeholder="Search symptoms...">
                 </div>
                 
-                <div class="feature">
-                    <div class="feature-icon">
-                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 9V11M12 15H12.01M5.07183 19H18.9282C20.4678 19 21.4301 17.3333 20.6603 16L13.7321 4C12.9623 2.66667 11.0378 2.66667 10.268 4L3.33978 16C2.56998 17.3333 3.53223 19 5.07183 19Z" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                <div class="symptoms-selection">
+                    <div class="symptoms-column">
+                        <h3>Available Symptoms</h3>
+                        <div id="available-symptoms-list" class="symptoms-list"></div>
                     </div>
-                    <h3>Treatment Guidance</h3>
-                    <p>Discover potential treatments, home remedies, and critical indicators for when professional medical care is necessary.</p>
+                    
+                    <div class="symptoms-column">
+                        <h3>Your Symptoms <span id="selected-count" class="count-badge">0</span></h3>
+                        <div id="selected-symptoms-list" class="symptoms-list"></div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="main-buttons">
-                <a href="index.html" class="get-started-btn">Get Started</a>
-                <a href="about.html" class="secondary-btn">About Us</a>
-                <a href="theteam.html" class="secondary-btn">Our Team</a>
-            </div>
-            
+                
+                <button id="predict-btn" class="action-button" disabled>
+                    <i class="fas fa-stethoscope"></i> Analyze Symptoms
+                </button>
+            </section>
+
+            <section class="results-card" id="results-container">
+                <div class="loader-container" id="loader">
+                    <div class="loader"></div>
+                    <p>Analyzing your symptoms...</p>
+                </div>
+                
+                <div id="results-content" style="display: none;">
+                    <div class="diagnosis-section">
+                        <div class="diagnosis-header">
+                            <i class="fas fa-user-md"></i>
+                            <h3>Probable Diagnosis</h3>
+                        </div>
+                        <div class="diagnosis-result">
+                            <h2 id="disease-result">-</h2>
+                            <div class="confidence-container">
+                                <div class="confidence-wrapper">
+                                    <div id="confidence-bar" class="confidence-bar"></div>
+                                </div>
+                                <span id="confidence-text">Confidence: 0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-header">
+                                <i class="fas fa-pills"></i>
+                                <h3>Recommended Medicines</h3>
+                            </div>
+                            <div id="medicines-result" class="info-content"></div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-header">
+                                <i class="fas fa-mortar-pestle"></i>
+                                <h3>Home Remedies</h3>
+                            </div>
+                            <div id="remedies-result" class="info-content"></div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-header">
+                                <i class="fas fa-calendar-alt"></i>
+                                <h3>Recovery Time</h3>
+                            </div>
+                            <div id="recovery-result" class="info-content"></div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-header">
+                                <i class="fas fa-shield-alt"></i>
+                                <h3>Precautions</h3>
+                            </div>
+                            <div id="precautions-result" class="info-content"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="no-match" class="no-match" style="display: none;">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h3>No Matching Condition Found</h3>
+                    <p>Please select different or additional symptoms to improve the analysis.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
             <div class="disclaimer">
-                <strong>Medical Disclaimer:</strong> This system is designed for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Disclaimer: This tool is for informational purposes only and not a substitute for professional medical advice.</p>
             </div>
-        </div>
-        
-        <div class="wave-divider">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="#0284c7"></path>
-                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="#0284c7"></path>
-                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#0284c7"></path>
-            </svg>
-        </div>
+            <div class="copyright">
+                <p>&copy; 2025 MediSense - Intelligent Disease Prediction</p>
+            </div>
+        </footer>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
